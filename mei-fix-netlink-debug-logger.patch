@@ -1,0 +1,20 @@
+--- a/src/drv_mei_cpe_linux.c
++++ b/src/drv_mei_cpe_linux.c
+@@ -3609,7 +3609,7 @@ static void MEI_NlSendMsg(IFX_char_t* pM
+    }
+ 
+    nMsgSize = strlen(pMsg);
+-   pSkbOut = nlmsg_new(nMsgSize, GFP_KERNEL);
++   pSkbOut = nlmsg_new(nMsgSize, GFP_ATOMIC);
+ 
+    if (!pSkbOut)
+    {
+@@ -3626,7 +3626,7 @@ static void MEI_NlSendMsg(IFX_char_t* pM
+       return;
+ 	}
+ 
+-   nlmsg_multicast(nl_debug_sock, pSkbOut, 0, NL_DBG_MSG_GROUP, GFP_KERNEL);
++   nlmsg_multicast(nl_debug_sock, pSkbOut, 0, NL_DBG_MSG_GROUP, GFP_ATOMIC);
+ }
+ 
+ int MEI_debugLogSend(IFX_char_t *fmt, ...)
