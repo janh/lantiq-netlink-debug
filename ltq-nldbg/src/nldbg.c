@@ -22,7 +22,7 @@ int readmsg(int fd) {
 		return len;
 	}
 
-	printf("%.*s\n", (len - NLMSG_LENGTH(0)), (char *) NLMSG_DATA((struct nlmsghdr *) &buf));
+	printf("%.*s", (len - NLMSG_LENGTH(0)), (char *) NLMSG_DATA((struct nlmsghdr *) &buf));
 
 	return 0;
 }
